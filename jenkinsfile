@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Bake image') {
             steps {
-                sh'sudo packer init docker-image.pkr.hcl'
-                sh'sudo packer build docker-image.pkr.hcl'
+                sh'packer init docker-image.pkr.hcl'
+                sh'packer build docker-image.pkr.hcl'
             }
         }
     }
