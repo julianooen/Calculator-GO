@@ -28,6 +28,10 @@ build {
 
   }
 
+  provisioner "shell" {
+    inline = ["cd /calc", "go mod tidy", "go build calc"]
+  }
+
   post-processor "docker-tag" {
     repository = "go-calc"
     tags       = ["latest"]
