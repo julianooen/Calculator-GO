@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Bake image') {
+        stage('BAKE image') {
             steps {
                 sh'packer init docker-image.pkr.hcl'
                 sh'packer build docker-image.pkr.hcl'
