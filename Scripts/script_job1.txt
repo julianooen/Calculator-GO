@@ -1,0 +1,99 @@
+Iniciado pelo usuário admin
+Obtained jenkinsfile from git https://github.com/julianooen/Calculator-GO.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/job1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+using credential github_cred
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/job1/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/julianooen/Calculator-GO.git # timeout=10
+Fetching upstream changes from https://github.com/julianooen/Calculator-GO.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/julianooen/Calculator-GO.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision f01c83c7a8099acd512fc4e6eec76be00a5232d8 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f01c83c7a8099acd512fc4e6eec76be00a5232d8 # timeout=10
+Commit message: "jenkins changes 1"
+ > git rev-list --no-walk f01c83c7a8099acd512fc4e6eec76be00a5232d8 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Bake image)
+[Pipeline] sh
++ packer init docker-image.pkr.hcl
+[Pipeline] sh
++ packer build docker-image.pkr.hcl
+[1;32mGO-calc.docker.golang: output will be in this color.[0m
+
+[1;32m==> GO-calc.docker.golang: Creating a temporary directory for sharing data...[0m
+[1;32m==> GO-calc.docker.golang: Pulling Docker image: golang:1.19[0m
+[0;32m    GO-calc.docker.golang: 1.19: Pulling from library/golang[0m
+[0;32m    GO-calc.docker.golang: 23858da423a6: Pulling fs layer[0m
+[0;32m    GO-calc.docker.golang: 326f452ade5c: Pulling fs layer[0m
+[0;32m    GO-calc.docker.golang: a42821cd14fb: Pulling fs layer[0m
+[0;32m    GO-calc.docker.golang: 8471b75885ef: Pulling fs layer[0m
+[0;32m    GO-calc.docker.golang: b7aa120dd02d: Pulling fs layer[0m
+[0;32m    GO-calc.docker.golang: 292167c9d1ff: Pulling fs layer[0m
+[0;32m    GO-calc.docker.golang: 8709771bd9da: Pulling fs layer[0m
+[0;32m    GO-calc.docker.golang: 292167c9d1ff: Waiting[0m
+[0;32m    GO-calc.docker.golang: 8709771bd9da: Waiting[0m
+[0;32m    GO-calc.docker.golang: 8471b75885ef: Waiting[0m
+[0;32m    GO-calc.docker.golang: b7aa120dd02d: Waiting[0m
+[0;32m    GO-calc.docker.golang: 326f452ade5c: Download complete[0m
+[0;32m    GO-calc.docker.golang: a42821cd14fb: Verifying Checksum[0m
+[0;32m    GO-calc.docker.golang: a42821cd14fb: Download complete[0m
+[0;32m    GO-calc.docker.golang: 23858da423a6: Download complete[0m
+[0;32m    GO-calc.docker.golang: 8471b75885ef: Verifying Checksum[0m
+[0;32m    GO-calc.docker.golang: 8471b75885ef: Download complete[0m
+[0;32m    GO-calc.docker.golang: 23858da423a6: Pull complete[0m
+[0;32m    GO-calc.docker.golang: 326f452ade5c: Pull complete[0m
+[0;32m    GO-calc.docker.golang: a42821cd14fb: Pull complete[0m
+[0;32m    GO-calc.docker.golang: 8709771bd9da: Verifying Checksum[0m
+[0;32m    GO-calc.docker.golang: 8709771bd9da: Download complete[0m
+[0;32m    GO-calc.docker.golang: 8471b75885ef: Pull complete[0m
+[0;32m    GO-calc.docker.golang: b7aa120dd02d: Verifying Checksum[0m
+[0;32m    GO-calc.docker.golang: b7aa120dd02d: Download complete[0m
+[0;32m    GO-calc.docker.golang: b7aa120dd02d: Pull complete[0m
+[0;32m    GO-calc.docker.golang: 292167c9d1ff: Verifying Checksum[0m
+[0;32m    GO-calc.docker.golang: 292167c9d1ff: Download complete[0m
+[0;32m    GO-calc.docker.golang: 292167c9d1ff: Pull complete[0m
+[0;32m    GO-calc.docker.golang: 8709771bd9da: Pull complete[0m
+[0;32m    GO-calc.docker.golang: Digest: sha256:2d17ffd12a2cdb25d4a633ad25f8dc29608ed84f31b3b983427d825280427095[0m
+[0;32m    GO-calc.docker.golang: Status: Downloaded newer image for golang:1.19[0m
+[0;32m    GO-calc.docker.golang: docker.io/library/golang:1.19[0m
+[1;32m==> GO-calc.docker.golang: Starting docker container...[0m
+[0;32m    GO-calc.docker.golang: Run command: docker run -v /var/lib/jenkins/.config/packer/tmp3721453380:/packer-files -d -i -t --entrypoint=/bin/sh -- golang:1.19[0m
+[0;32m    GO-calc.docker.golang: Container ID: f8e172138f80b1f7e38e427d647a7184790116c36fae10868c1637b824c9963a[0m
+[1;32m==> GO-calc.docker.golang: Using docker communicator to connect: 172.17.0.2[0m
+[1;32m==> GO-calc.docker.golang: Uploading ./calc => /calc[0m
+[1;32m==> GO-calc.docker.golang: Committing the container[0m
+[0;32m    GO-calc.docker.golang: Image ID: sha256:506036137ee252a95b885481730612f4f482ef2e65d77bb1087c069c1bdb75b0[0m
+[1;32m==> GO-calc.docker.golang: Killing the container: f8e172138f80b1f7e38e427d647a7184790116c36fae10868c1637b824c9963a[0m
+[1;32m==> GO-calc.docker.golang: Running post-processor:  (type docker-tag)[0m
+[0;32m    GO-calc.docker.golang (docker-tag): Tagging image: sha256:506036137ee252a95b885481730612f4f482ef2e65d77bb1087c069c1bdb75b0[0m
+[0;32m    GO-calc.docker.golang (docker-tag): Repository: go-calc:latest[0m
+[1;32mBuild 'GO-calc.docker.golang' finished after 7 minutes 39 seconds.[0m
+
+==> Wait completed after 7 minutes 39 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> GO-calc.docker.golang: Imported Docker image: sha256:506036137ee252a95b885481730612f4f482ef2e65d77bb1087c069c1bdb75b0
+--> GO-calc.docker.golang: Imported Docker image: go-calc:latest with tags go-calc:latest
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
