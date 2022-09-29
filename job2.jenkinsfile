@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Bake image') {
+            steps {
+                sh'docker run --name calc -p 8080:8080 go-calc'
+            }
+        }
+    }
+}
